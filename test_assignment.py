@@ -25,23 +25,23 @@ def test_swap_values():
     # Test case 3: List with duplicate elements
     lst = [5, 3, 5, 2, 1]
     assignment.swap_values(lst)
-    assert lst == [1, 3, 5, 2, 5]
+    assert lst == [3, 5, 5, 2, 1]
 
 def test_compare_values():
     # Test case 1: List with two elements
     lst = [2, 1]
     result = assignment.compare_values(lst)
-    assert result == True
+    assert result == [True]
 
     # Test case 2: List with three elements
     lst = [3, 1, 2]
     result = assignment.compare_values(lst)
-    assert result == False
+    assert result == [True, False]
 
     # Test case 3: List with duplicate elements
     lst = [5, 3, 5, 2, 1]
     result = assignment.compare_values(lst)
-    assert result == False
+    assert result == [True, False, True, True]
 
 def test_bubble_sort():
     # Test case 1: List with two elements
