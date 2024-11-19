@@ -1,6 +1,7 @@
 import assignment
 import assignment
 import time
+import pytest
 
 def timer_decorator(func):
     def wrapper(*args, **kwargs):
@@ -9,7 +10,8 @@ def timer_decorator(func):
         end_time = time.time()
         execution_time = end_time - start_time
         return execution_time
-    return wrapper
+    return wrapper 
+
 
 def test_swap_values():
     # Test case 1: List with two elements
@@ -43,6 +45,16 @@ def test_compare_values():
     result = assignment.compare_values(lst)
     assert result == [True, False, True, True]
 
+@timer_decorator
+def sort_list(lst):
+    lst.sort()
+    
+
+@timer_decorator
+def sort_bubble(lst):
+    assignment.bubble_sort(lst)
+
+
 def test_bubble_sort():
     # Test case 1: List with two elements
     lst = [2, 1]
@@ -62,8 +74,8 @@ def test_bubble_sort():
     # Test case 4: Test that the .sort() method is not used
     lst = [5, 3, 5, 2, 1]
 
-    time_assignment = timer_decorator(assignment.bubble_sort(lst))
-    time_sort = timer_decorator(lst.sort()) 
+    time_assignment = sort_bubble(lst)
+    time_sort = sort_list(lst)
 
     assert time_assignment > time_sort
 
